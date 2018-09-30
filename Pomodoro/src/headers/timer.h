@@ -1,3 +1,5 @@
+#pragma once
+
 #include<chrono>
 #include<thread>
 #include<QLCDNumber>
@@ -19,7 +21,7 @@ private:
 	std::chrono::system_clock::time_point curPoint;
 
 	lli initTime = 0;	//first time point in seconds used in the calculation of timeLeft
-	lli execTime = 0;	//live point in seconds in the calculation of timeLeft
+	lli execTime = 0;	//live point in seconds for the calculation of timeLeft
 	lli timeLeft = 0;
 
 public:
@@ -41,8 +43,6 @@ public:
 	int setMin = 0;
 	int setSec = 0;
 
-	void (*targetFunc)() = nullptr;    //function which should be called on timer expiry
-
 	void setTime(std::string);
 	void setTime(int, int, int);	//function to set the display, save values and reset the timer
 	void getTime();
@@ -54,5 +54,5 @@ public:
 	void startTimer();
 	void timerExec();    //worker thread which calculates the time left
 
-	void endThread();    //
+	void endThread();
 };

@@ -102,9 +102,6 @@ void Timer::startTimer()
 	{
 		running = true;
 		startPoint = std::chrono::system_clock::now();
-
-		//new pointer to a thread; used due to issues with stack crated threads not being cleared fast enough
-		tThread = new std::thread(&Timer::timerExec, this);
 	}
 }
 
@@ -129,7 +126,7 @@ void Timer::timerExec()
 		if(timeLeft < 0)
 		{
 			running = false;
-			if(targetFunc != nullptr) targetFunc();
+			if(targetFunc != nullptr) (this->*targetFunc)();
 			return;
 		}
 
