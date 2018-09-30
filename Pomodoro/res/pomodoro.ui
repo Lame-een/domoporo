@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PomodoroClass</class>
+ <widget class="QMainWindow" name="PomodoroClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>517</width>
+    <height>307</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Pomodoro</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QLabel" name="separatorColon_1">
+    <property name="geometry">
+     <rect>
+      <x>164</x>
+      <y>16</y>
+      <width>21</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+      <pointsize>80</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <kerning>true</kerning>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: red;</string>
+    </property>
+    <property name="text">
+     <string>:</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="textInteractionFlags">
+     <set>Qt::NoTextInteraction</set>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="LCDmm">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>20</y>
+      <width>141</width>
+      <height>128</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS Shell Dlg 2</family>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: red;
+background-color: black;
+</string>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
+    </property>
+    <property name="smallDecimalPoint">
+     <bool>false</bool>
+    </property>
+    <property name="digitCount">
+     <number>2</number>
+    </property>
+    <property name="segmentStyle">
+     <enum>QLCDNumber::Flat</enum>
+    </property>
+    <property name="intValue" stdset="0">
+     <number>88</number>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="LCDhh">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>141</width>
+      <height>128</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: red;
+background-color: black;
+</string>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
+    </property>
+    <property name="digitCount">
+     <number>2</number>
+    </property>
+    <property name="segmentStyle">
+     <enum>QLCDNumber::Flat</enum>
+    </property>
+    <property name="value" stdset="0">
+     <double>88.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="LCDss">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>20</y>
+      <width>151</width>
+      <height>128</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: red;
+background-color: black;
+</string>
+    </property>
+    <property name="inputMethodHints">
+     <set>Qt::ImhDigitsOnly</set>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
+    </property>
+    <property name="digitCount">
+     <number>2</number>
+    </property>
+    <property name="segmentStyle">
+     <enum>QLCDNumber::Flat</enum>
+    </property>
+    <property name="value" stdset="0">
+     <double>88.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QLabel" name="separatorColon_2">
+    <property name="geometry">
+     <rect>
+      <x>334</x>
+      <y>16</y>
+      <width>21</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+      <pointsize>80</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <kerning>true</kerning>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string>color: red;</string>
+    </property>
+    <property name="text">
+     <string>:</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="textInteractionFlags">
+     <set>Qt::NoTextInteraction</set>
+    </property>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>170</y>
+      <width>257</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>15</number>
+     </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="startButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Start</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pauseButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Pause</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="stopButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Stop</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="setButton">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>170</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Set time</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="separatorBG_1">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>20</y>
+      <width>30</width>
+      <height>128</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: black;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="separatorBG_2">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>20</y>
+      <width>30</width>
+      <height>128</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: black;</string>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="qtAbout">
+    <property name="geometry">
+     <rect>
+      <x>1</x>
+      <y>280</y>
+      <width>21</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Qt</string>
+    </property>
+   </widget>
+   <zorder>LCDmm</zorder>
+   <zorder>LCDhh</zorder>
+   <zorder>LCDss</zorder>
+   <zorder>horizontalLayoutWidget</zorder>
+   <zorder>setButton</zorder>
+   <zorder>separatorBG_1</zorder>
+   <zorder>separatorColon_1</zorder>
+   <zorder>separatorBG_2</zorder>
+   <zorder>separatorColon_2</zorder>
+   <zorder>qtAbout</zorder>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="pomodoro.qrc"/>
+ </resources>
+ <connections/>
+</ui>

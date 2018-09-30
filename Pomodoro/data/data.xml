@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<root>
+  <timer>
+    <name>Timer1</name>
+    <time>
+      <hh>0</hh>
+      <mm>9</mm>
+      <ss>2</ss>
+    </time>
+    <audioPath>C:\PATH\TO\AUDIO</audioPath>
+  </timer>
+  <timer>
+    <name>Timer2</name>
+    <time>
+      <hh>0</hh>
+      <mm>3</mm>
+      <ss>2</ss>
+    </time>
+    <audioPath>C:\PATH\TO\AUDIO2</audioPath>
+  </timer>
+</root>
