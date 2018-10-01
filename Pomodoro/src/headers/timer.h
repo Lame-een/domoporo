@@ -6,6 +6,7 @@
 #include<QMessageBox>
 #include<QString>
 #include<QObject>
+#include "audioController.h"
 
 typedef long long int lli;
 
@@ -13,7 +14,9 @@ class Timer
 {
 private:
 	std::thread* tThread;
+	
 	bool running = false;
+	bool zeroTimer = true;
 
 	//typedef std::chrono::duration<double, std::ratio<1>> second;
 
@@ -29,6 +32,8 @@ public:
 	{
 		pause();	//safety pause to kill the thread
 	}
+	//object used to contain and play the alarm
+	AudioController player;
 
 	//timer name used for saves
 	QString name = "defName";

@@ -80,6 +80,16 @@ void Timer::setTime(int hh, int mm, int ss)
 
 		running = false;
 		initTime = hh * 3600 + mm * 60 + ss;
+		
+		if(initTime != 0)
+		{
+			zeroTimer = false;
+		}
+		else
+		{
+			zeroTimer = true;
+		}
+
 		timeLeft = initTime;
 	}
 }
@@ -102,6 +112,9 @@ void Timer::startTimer()
 	{
 		running = true;
 		startPoint = std::chrono::system_clock::now();
+
+		//new pointer to a thread; used due to issues with stack crated threads not being cleared fast enough
+		tThread = new std::thread(&Timer::timerExec, this);
 	}
 }
 
@@ -125,8 +138,10 @@ void Timer::timerExec()
 
 		if(timeLeft < 0)
 		{
+			if(!zeroTimer) player.playAudio();
+			zeroTimer = true;
+
 			running = false;
-			if(targetFunc != nullptr) (this->*targetFunc)();
 			return;
 		}
 

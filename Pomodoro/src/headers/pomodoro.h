@@ -25,7 +25,6 @@ public slots:
 	void setTimer();
 
 	void qtAbout();
-
 private:
 	Ui::PomodoroClass ui;
 	Timer* LCDTimer = nullptr;
