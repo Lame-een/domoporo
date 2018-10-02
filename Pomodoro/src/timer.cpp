@@ -110,7 +110,11 @@ void Timer::getTime()
 
 void Timer::startTimer()
 {
-	if(!running)
+	if(zeroTimer)
+	{
+		stopTimer();
+		startTimer();
+	}else if(!running)
 	{
 		running = true;
 		startPoint = std::chrono::system_clock::now();

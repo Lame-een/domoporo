@@ -34,7 +34,7 @@ void Pomodoro::initTimer()
 	LCDTimer->minDisp = ui.LCDmm;
 	LCDTimer->secDisp = ui.LCDss;
 
-	LCDTimer->setTime(0, 0, 0);
+	LCDTimer->setTime(0, 25, 0);
 	setVolume(50);
 	ui.volumeSlider->setValue(50);
 }
