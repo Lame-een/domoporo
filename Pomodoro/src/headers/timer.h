@@ -3,9 +3,9 @@
 #include<chrono>
 #include<thread>
 #include<QLCDNumber>
-#include<QMessageBox>
 #include<QString>
-#include<QObject>
+#include<QMessageBox>
+//#include<QObject>
 #include "AudioPlayer.h"
 
 typedef long long int lli;
@@ -18,8 +18,6 @@ private:
 	bool running = false;
 	bool zeroTimer = true;
 
-	//typedef std::chrono::duration<double, std::ratio<1>> second;
-
 	std::chrono::system_clock::time_point startPoint;
 	std::chrono::system_clock::time_point curPoint;
 
@@ -30,7 +28,7 @@ private:
 public:
 	~Timer()
 	{
-		pause();	//safety pause to kill the thread
+		pauseTimer();	//safety pause to kill the thread
 	}
 	//object used to contain and play the alarm
 	AudioPlayer player;
@@ -54,8 +52,8 @@ public:
 	
 	void setDisplay(int, int, int);    //handles the LCD display values
 
-	void pause();
-	void stop();
+	void pauseTimer();
+	void stopTimer();
 	void startTimer();
 	void timerExec();    //worker thread which calculates the time left
 

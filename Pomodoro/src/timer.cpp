@@ -1,6 +1,6 @@
 #include "headers/timer.h"
 
-void Timer::pause()
+void Timer::pauseTimer()
 {
 	if(running)
 	{
@@ -10,7 +10,7 @@ void Timer::pause()
 	}
 }
 
-void Timer::stop()
+void Timer::stopTimer()
 {
 	if(running)
 	{
@@ -22,6 +22,7 @@ void Timer::stop()
 	{
 		setTime(setHour, setMin, setSec);
 	}
+	player.stopAudio();
 }
 
 void Timer::setDisplay(int hh, int mm, int ss)
@@ -79,7 +80,7 @@ void Timer::setTime(int hh, int mm, int ss)
 		setDisplay(hh, mm, ss);
 
 		running = false;
-		initTime = hh * 3600 + mm * 60 + ss;
+		initTime = (hh * 3600 + mm * 60 + ss)*1000;
 		
 		if(initTime != 0)
 		{
@@ -97,6 +98,7 @@ void Timer::setTime(int hh, int mm, int ss)
 void Timer::getTime()
 {
 	lli timeCpy = timeLeft;
+	timeCpy /= 1000;
 	int hh = timeCpy / 3600;
 	timeCpy %= 3600;
 	int mm = timeCpy / 60;
@@ -132,11 +134,11 @@ void Timer::timerExec()
 	while(running)
 	{
 		curPoint = std::chrono::system_clock::now();
-		execTime = std::chrono::duration_cast<std::chrono::seconds>(curPoint - startPoint).count();
+		execTime = std::chrono::duration_cast<std::chrono::milliseconds>(curPoint - startPoint).count();
 
 		timeLeft = initTime - execTime;
 
-		if(timeLeft < 0)
+		if(timeLeft < 100)
 		{
 			if(!zeroTimer) player.playAudio();
 			zeroTimer = true;
