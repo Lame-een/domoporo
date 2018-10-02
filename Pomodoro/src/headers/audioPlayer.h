@@ -3,7 +3,7 @@
 #include <QMediaPlayer>
 #include <QString>
 
-class AudioController
+class AudioPlayer
 {
 private:
 	QString path;
@@ -12,11 +12,11 @@ private:
 
 
 public:
-	AudioController()
+	AudioPlayer()
 	{
 		setAudio("C:\\DEV\\Qt\\Pomodoro\\Pomodoro\\data\\alarms\\oth_def.wav");
 	}
-	~AudioController()
+	~AudioPlayer()
 	{
 		//delete player;
 	}

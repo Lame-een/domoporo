@@ -6,7 +6,7 @@
 #include<QMessageBox>
 #include<QString>
 #include<QObject>
-#include "audioController.h"
+#include "AudioPlayer.h"
 
 typedef long long int lli;
 
@@ -33,7 +33,7 @@ public:
 		pause();	//safety pause to kill the thread
 	}
 	//object used to contain and play the alarm
-	AudioController player;
+	AudioPlayer player;
 
 	//timer name used for saves
 	QString name = "defName";
