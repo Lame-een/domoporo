@@ -1,9 +1,10 @@
 #pragma once
 
-#include <QtWidgets/QMainWindow>
+#include <QMainWindow>
+#include <QInputDialog>
+#include <QFileDialog>
 #include "ui_pomodoro.h"
 #include "timer.h"
-#include <QInputDialog>
 
 class Pomodoro : public QMainWindow
 {
@@ -23,6 +24,9 @@ public slots:
 	void pauseTimer();
 	void stopTimer();
 	void setTimer();
+
+	void selectAudio();
+	void setVolume(int);
 
 	void qtAbout();
 private:

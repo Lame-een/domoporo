@@ -8,7 +8,7 @@ class AudioPlayer
 private:
 	QString path;
 	QMediaPlayer player;
-	int volume = 100;
+	int volume;
 
 
 public:
@@ -18,11 +18,12 @@ public:
 	}
 	~AudioPlayer()
 	{
-		//delete player;
 	}
 
 public slots:
 	void setAudio(QString);
+	QString getPath();
 	void playAudio();
+	void stopAudio();
 	void setVolume(int);
 };

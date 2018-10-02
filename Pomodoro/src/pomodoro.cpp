@@ -1,5 +1,6 @@
-#include "headers/pomodoro.h"
 #include <QPushButton>
+#include <QSlider>
+#include "headers/pomodoro.h"
 
 Pomodoro::Pomodoro(QWidget *parent)
 	: QMainWindow(parent)
@@ -10,8 +11,14 @@ Pomodoro::Pomodoro(QWidget *parent)
 	connect(ui.stopButton, &QPushButton::released, this, &Pomodoro::stopTimer);
 	connect(ui.pauseButton, &QPushButton::released, this, &Pomodoro::pauseTimer);
 	connect(ui.setButton, &QPushButton::released, this, &Pomodoro::setTimer);
+
+	connect(ui.audioSelectButton, &QPushButton::released, this, &Pomodoro::selectAudio);
+	connect(ui.testAudio, &QPushButton::released, this, [this]{LCDTimer->player.playAudio();});
+
 	connect(ui.qtAbout, &QPushButton::released, this, &Pomodoro::qtAbout);
-	
+
+	connect(ui.volumeSlider, &QSlider::valueChanged, this, [this]{setVolume(ui.volumeSlider->value());});	//lambda expression used to avoid declaring another function inside the Pomodoro class
+
 	initTimer();
 }
 
@@ -28,21 +35,8 @@ void Pomodoro::initTimer()
 	LCDTimer->secDisp = ui.LCDss;
 
 	LCDTimer->setTime(0, 0, 0);
-}
-
-void Pomodoro::pauseTimer()
-{
-	LCDTimer->pause();
-}
-
-void Pomodoro::stopTimer()
-{
-	LCDTimer->stop();
-}
-
-void Pomodoro::startTimer()
-{
-	LCDTimer->startTimer();
+	setVolume(50);
+	ui.volumeSlider->setValue(50);
 }
 
 void Pomodoro::setTimer()
@@ -56,4 +50,31 @@ void Pomodoro::setTimer()
 	{
 		LCDTimer->setTime(hour, minute, second);
 	}
+}
+
+void Pomodoro::pauseTimer()
+{
+	LCDTimer->pauseTimer();
+}
+
+void Pomodoro::stopTimer()
+{
+	LCDTimer->stopTimer();
+}
+
+void Pomodoro::startTimer()
+{
+	LCDTimer->startTimer();
+}
+
+void Pomodoro::selectAudio()
+{
+	QString filename = QFileDialog::getOpenFileName(this, tr("Select alarm"), LCDTimer->player.getPath(), "Microsoft Wave (*.wav);;MPEG-3 (*.mp3);;All files (*.*)");
+	LCDTimer->player.setAudio(filename);
+}
+
+void Pomodoro::setVolume(int in)
+{
+	ui.volumeValue->setText(QString::number(in));
+	LCDTimer->player.setVolume(in);
 }

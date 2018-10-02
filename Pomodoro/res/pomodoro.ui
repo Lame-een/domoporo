@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>517</width>
-    <height>307</height>
+    <width>534</width>
+    <height>376</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -282,14 +282,102 @@ background-color: black;
    <widget class="QPushButton" name="qtAbout">
     <property name="geometry">
      <rect>
-      <x>1</x>
-      <y>280</y>
+      <x>0</x>
+      <y>340</y>
       <width>21</width>
       <height>23</height>
      </rect>
     </property>
     <property name="text">
      <string>Qt</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="audioSelectButton">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>250</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>SetAudio</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>290</y>
+      <width>160</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="volumeLayout" stretch="1,0">
+     <property name="spacing">
+      <number>1</number>
+     </property>
+     <property name="sizeConstraint">
+      <enum>QLayout::SetFixedSize</enum>
+     </property>
+     <item>
+      <widget class="QSlider" name="volumeSlider">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>125</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="sliderPosition">
+        <number>50</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksAbove</enum>
+       </property>
+       <property name="tickInterval">
+        <number>10</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="volumeValue">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>100</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="testAudio">
+    <property name="geometry">
+     <rect>
+      <x>192</x>
+      <y>298</y>
+      <width>21</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>T</string>
     </property>
    </widget>
    <zorder>LCDmm</zorder>
@@ -302,6 +390,9 @@ background-color: black;
    <zorder>separatorBG_2</zorder>
    <zorder>separatorColon_2</zorder>
    <zorder>qtAbout</zorder>
+   <zorder>audioSelectButton</zorder>
+   <zorder>horizontalLayoutWidget_2</zorder>
+   <zorder>testAudio</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

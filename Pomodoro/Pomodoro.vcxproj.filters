@@ -42,7 +42,7 @@
     <ClCompile Include="src\XMLhandle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\audioController.cpp">
+    <ClCompile Include="src\audioPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -66,7 +66,7 @@
     <ClInclude Include="src\headers\XMLhandle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\headers\audioController.h">
+    <ClInclude Include="src\headers\audioPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
