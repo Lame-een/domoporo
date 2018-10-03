@@ -8,7 +8,7 @@
 #include <QMessageBox>
 #include <vector>
 
-struct SaveData
+struct SaveData	//save data transport struct
 {
 	QString name;
 	int hh;

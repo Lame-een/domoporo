@@ -5,7 +5,6 @@
 #include<QLCDNumber>
 #include<QString>
 #include<QMessageBox>
-//#include<QObject>
 #include "AudioPlayer.h"
 
 typedef long long int lli;

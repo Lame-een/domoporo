@@ -1,7 +1,5 @@
-#include "headers/XMLhandle.h"
+#include "headers/saveManager.h"
 #include <QDebug>
-
-//WILL BE USED FOR HANDLING THE SAVING OF TIMER PRESETS
 
 void SaveManager::readName()
 {

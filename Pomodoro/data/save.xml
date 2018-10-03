@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<saveData>
+    <timer>
+        <name>NAME</name>
+        <time>
+            <hh>0</hh>
+            <mm>25</mm>
+            <ss>0</ss>
+        </time>
+        <audioPath>PATH</audioPath>
+        <audioVolume>50</audioVolume>
+    </timer>
+</saveData>

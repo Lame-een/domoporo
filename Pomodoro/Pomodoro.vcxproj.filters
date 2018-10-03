@@ -39,10 +39,10 @@
     <ClCompile Include="src\timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\XMLhandle.cpp">
+    <ClCompile Include="src\audioPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\audioPlayer.cpp">
+    <ClCompile Include="src\saveManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -57,16 +57,16 @@
     </QtRcc>
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="data\data.xml" />
+    <Xml Include="data\save.xml" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\headers\timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\headers\XMLhandle.h">
+    <ClInclude Include="src\headers\audioPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\headers\audioPlayer.h">
+    <ClInclude Include="src\headers\saveManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

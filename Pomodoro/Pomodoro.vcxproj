@@ -62,7 +62,7 @@
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -93,7 +93,7 @@
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -118,8 +118,8 @@
     <ClCompile Include="src\audioPlayer.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\pomodoro.cpp" />
+    <ClCompile Include="src\saveManager.cpp" />
     <ClCompile Include="src\timer.cpp" />
-    <ClCompile Include="src\XMLhandle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="src\headers\pomodoro.h" />
@@ -133,7 +133,7 @@
     <QtRcc Include="res\pomodoro.qrc" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="data\data.xml" />
+    <Xml Include="data\save.xml" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\headers\audioPlayer.h">
@@ -142,8 +142,8 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtMultimedia</IncludePath>
       <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_MULTIMEDIA_LIB</Define>
     </ClInclude>
+    <ClInclude Include="src\headers\saveManager.h" />
     <ClInclude Include="src\headers\timer.h" />
-    <ClInclude Include="src\headers\XMLhandle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

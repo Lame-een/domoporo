@@ -1,10 +1,30 @@
 #include <QPushButton>
 #include <QSlider>
 #include "headers/pomodoro.h"
+#include "headers/saveManager.h"
 
 Pomodoro::Pomodoro(QWidget *parent)
 	: QMainWindow(parent)
 {
+	/*
+	SaveManager sm;
+
+	sm.readSaveFile();
+	sm.appendSave("NAME", 0, 25, 0, "PATH", 50);
+	//sm.removePreset(1);
+	sm.saveData();
+
+	for(int i = 0; i < sm.presets.size(); i++)
+	{
+		qDebug(qPrintable(sm.presets[i].name));
+		qDebug(qPrintable(QString::number(sm.presets[i].hh)));
+		qDebug(qPrintable(QString::number(sm.presets[i].mm)));
+		qDebug(qPrintable(QString::number(sm.presets[i].ss)));
+		qDebug(qPrintable(sm.presets[i].path));
+		qDebug(qPrintable(QString::number(sm.presets[i].volume)));
+	}
+	*/
+
 	ui.setupUi(this);
 
 	connect(ui.startButton, &QPushButton::released, this, &Pomodoro::startTimer);
