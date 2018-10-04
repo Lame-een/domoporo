@@ -15,12 +15,12 @@ void Timer::stopTimer()
 	if(running)
 	{
 		running = false;
-		setTime(setHour, setMin, setSec);
+		setTime(setVals.hh, setVals.mm, setVals.ss);
 		endThread();
 	}
 	else
 	{
-		setTime(setHour, setMin, setSec);
+		setTime(setVals.hh, setVals.mm, setVals.ss);
 	}
 	player.stopAudio();
 }
@@ -55,17 +55,6 @@ void Timer::setDisplay(int hh, int mm, int ss)
 	}
 }
 
-void Timer::setTime(std::string in)
-{
-	int hh;
-	int mm;
-	int ss;
-
-	sscanf_s(in.c_str(), "%d:%d:%d", &hh, &mm, &ss);
-
-	setTime(hh, mm, ss);
-}
-
 void Timer::setTime(int hh, int mm, int ss)
 {
 	if(mm > 59 || ss > 59)
@@ -74,9 +63,9 @@ void Timer::setTime(int hh, int mm, int ss)
 	}
 	else
 	{
-		setHour = hh;
-		setMin = mm;
-		setSec = ss;
+		setVals.hh = hh;
+		setVals.mm = mm;
+		setVals.ss = ss;
 		setDisplay(hh, mm, ss);
 
 		running = false;
@@ -84,10 +73,12 @@ void Timer::setTime(int hh, int mm, int ss)
 		
 		if(initTime != 0)
 		{
+			setZero = false;
 			zeroTimer = false;
 		}
 		else
 		{
+			setZero = true;
 			zeroTimer = true;
 		}
 
@@ -108,9 +99,23 @@ void Timer::getTime()
 	setDisplay(hh, mm, ss);
 }
 
+trip Timer::getCurrTime()
+{
+	trip ret;
+	lli timeCpy = timeLeft;
+	timeCpy /= 1000;
+	ret.hh = timeCpy / 3600;
+	timeCpy %= 3600;
+	ret.mm = timeCpy / 60;
+	timeCpy %= 60;
+	ret.ss = timeCpy;
+
+	return ret;
+}
+
 void Timer::startTimer()
 {
-	if(zeroTimer)
+	if(zeroTimer && !setZero)
 	{
 		stopTimer();
 		startTimer();

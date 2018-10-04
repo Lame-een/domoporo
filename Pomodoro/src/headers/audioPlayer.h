@@ -8,17 +8,17 @@ class AudioPlayer
 private:
 	QString path;
 	QMediaPlayer player;
-	int volume;
 
 
 public:
 	AudioPlayer()
 	{
-		setAudio("C:\\DEV\\Qt\\Pomodoro\\Pomodoro\\data\\alarms\\oth_def.wav");
+		setAudio(".\\data\\alarms\\oth_def.wav");
 	}
 	~AudioPlayer()
 	{
 	}
+	int volume;
 
 public slots:
 	void setAudio(QString);

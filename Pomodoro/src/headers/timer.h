@@ -1,5 +1,4 @@
 #pragma once
-
 #include<chrono>
 #include<thread>
 #include<QLCDNumber>
@@ -9,6 +8,13 @@
 
 typedef long long int lli;
 
+struct trip
+{
+	int hh = 0;
+	int mm = 0;
+	int ss = 0;
+};
+
 class Timer
 {
 private:
@@ -16,6 +22,7 @@ private:
 	
 	bool running = false;
 	bool zeroTimer = true;
+	bool setZero = true;
 
 	std::chrono::system_clock::time_point startPoint;
 	std::chrono::system_clock::time_point curPoint;
@@ -41,13 +48,12 @@ public:
 	QLCDNumber *secDisp;
 
 	//beginning values of the timer, used to save as a preset
-	int setHour = 0;
-	int setMin = 0;
-	int setSec = 0;
+	trip setVals;
 
-	void setTime(std::string);
 	void setTime(int, int, int);	//function to set the display, save values and reset the timer
-	void getTime();
+	void getTime();		//function which calculates the current time and calls setDisplay
+
+	trip getCurrTime();
 	
 	void setDisplay(int, int, int);    //handles the LCD display values
 

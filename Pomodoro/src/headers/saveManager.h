@@ -1,5 +1,5 @@
 #pragma once
-//#include "timer.h"
+#include "timer.h"
 #include <QXMLStreamReader>
 #include <QXMLStreamWriter>
 #include <QFile>
@@ -11,9 +11,7 @@
 struct SaveData	//save data transport struct
 {
 	QString name;
-	int hh;
-	int mm;
-	int ss;
+	trip time;
 	QString path;
 	int volume;
 };
@@ -27,7 +25,7 @@ private:
 	void readVolume();
 	void saveTimer(SaveData&);
 
-	QString pathToFile = ".\\data\\data.xml";
+	QString pathToFile = ".\\data\\save.xml";
 
 	SaveData curSave;
 
@@ -38,11 +36,9 @@ public:
 	void saveData();
 
 	void appendSave(SaveData&);
-	void appendSave(QString& name, int& hh, int& mm, int& ss, QString& path, int& volume);
-	void appendSave(QString, int, int, int, QString, int);
+	void appendSave(QString&, trip&, QString&, int&);
 
 	void removePreset(int&);
-	void removePreset(int);
 
 	std::vector<SaveData> presets;
 };
