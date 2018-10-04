@@ -67,13 +67,22 @@ void Pomodoro::setTimer()
 {
 	bool okH, okM, okS;
 	int hour = QInputDialog::getInt(this, "Hour Input", "Enter the amount of hours:", 0, 0, 99, 1, &okH, Qt::MSWindowsFixedSizeDialogHint);
-	int minute = QInputDialog::getInt(this, "Minute Input", "Enter the amount of minutes:", 0, 0, 59, 1, &okM, Qt::MSWindowsFixedSizeDialogHint);
-	int second = QInputDialog::getInt(this, "Second Input", "Enter the amount of seconds:", 0, 0, 59, 1, &okS, Qt::MSWindowsFixedSizeDialogHint);
-
-	if(okH && okM && okS)
+	if(!okH)
 	{
-		LCDTimer.setTime(hour, minute, second);
+		return;
 	}
+	int minute = QInputDialog::getInt(this, "Minute Input", "Enter the amount of minutes:", 0, 0, 59, 1, &okM, Qt::MSWindowsFixedSizeDialogHint);
+	if(!okM)
+	{
+		return;
+	}
+	int second = QInputDialog::getInt(this, "Second Input", "Enter the amount of seconds:", 0, 0, 59, 1, &okS, Qt::MSWindowsFixedSizeDialogHint);
+	if(!okS)
+	{
+		return;
+	}
+
+	LCDTimer.setTime(hour, minute, second);
 }
 
 void Pomodoro::pauseTimer()
