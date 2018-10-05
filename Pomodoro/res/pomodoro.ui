@@ -6,45 +6,101 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>534</width>
-    <height>376</height>
+    <width>618</width>
+    <height>295</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>618</width>
+    <height>295</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>618</width>
+    <height>323</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Pomodoro</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    background-color: #252526;
+    color: #ffffff;
+}
+
+QPushButton {
+    color: #ffffff;
+    background-color: #333334;
+    border: none;
+}
+
+QPushButton:hover {
+    background-color: #464649;
+}
+
+QLineEdit {
+    color: #ffffff;
+    background-color: #333334;
+    border-color: white;
+    border-width: 1px;
+}
+
+QComboBox {
+    color: #ffffff;
+    background-color: #333334;
+    border: none;
+}
+
+QComboBox::hover{
+	background-color: #464649
+}
+
+QComboBox QScrollBar:vertical {
+    background-color: #2D2D30;
+    margin: 0px;
+}
+
+QComboBox QScrollBar::handle:vertical {
+    background-color: #333334;
+    border-radius: 2px;
+    border-color: #ffffff;
+    min-height: 20px;
+}
+
+QComboBox QScrollBar::handle:hover {
+    background-color: #3A3A3A;
+}
+
+QComboBox QScrollBar::add-line:vertical, QComboBox QScrollBar::sub-line:vertical {
+    background: none;
+    height: 0px;
+    subcontrol-origin: margin;
+}
+
+QComboBox QScrollBar::add-page:vertical, QComboBox QScrollBar::sub-page:vertical {
+    background-color: #252526;
+}
+
+QComboBox QAbstractItemView {
+    color: #ffffff;
+}
+
+QComboBox::drop-down {
+    border: none;
+}
+
+QComboBox::down-arrow {
+    image: url(:/Pomodoro/downArrow.png);
+}
+</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QLabel" name="separatorColon_1">
-    <property name="geometry">
-     <rect>
-      <x>164</x>
-      <y>16</y>
-      <width>21</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Bahnschrift</family>
-      <pointsize>80</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-      <kerning>true</kerning>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: red;</string>
-    </property>
-    <property name="text">
-     <string>:</string>
-    </property>
-    <property name="scaledContents">
-     <bool>false</bool>
-    </property>
-    <property name="textInteractionFlags">
-     <set>Qt::NoTextInteraction</set>
-    </property>
-   </widget>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <widget class="QLCDNumber" name="LCDmm">
     <property name="geometry">
      <rect>
@@ -146,47 +202,16 @@ background-color: black;
      <double>88.000000000000000</double>
     </property>
    </widget>
-   <widget class="QLabel" name="separatorColon_2">
-    <property name="geometry">
-     <rect>
-      <x>334</x>
-      <y>16</y>
-      <width>21</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Bahnschrift</family>
-      <pointsize>80</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-      <kerning>true</kerning>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string>color: red;</string>
-    </property>
-    <property name="text">
-     <string>:</string>
-    </property>
-    <property name="scaledContents">
-     <bool>false</bool>
-    </property>
-    <property name="textInteractionFlags">
-     <set>Qt::NoTextInteraction</set>
-    </property>
-   </widget>
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>170</y>
-      <width>257</width>
-      <height>61</height>
+      <x>520</x>
+      <y>30</y>
+      <width>77</width>
+      <height>101</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
      <property name="spacing">
       <number>15</number>
      </property>
@@ -227,8 +252,14 @@ background-color: black;
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
        <property name="text">
         <string>Stop</string>
+       </property>
+       <property name="default">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -237,8 +268,8 @@ background-color: black;
    <widget class="QPushButton" name="setButton">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>170</y>
+      <x>430</x>
+      <y>160</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -247,7 +278,7 @@ background-color: black;
      <string>Set time</string>
     </property>
    </widget>
-   <widget class="QLabel" name="separatorBG_1">
+   <widget class="QLabel" name="separator_1">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -257,13 +288,16 @@ background-color: black;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: black;</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string/>
     </property>
+    <property name="pixmap">
+     <pixmap resource="pomodoro.qrc">:/Pomodoro/seperator.png</pixmap>
+    </property>
    </widget>
-   <widget class="QLabel" name="separatorBG_2">
+   <widget class="QLabel" name="separator_2">
     <property name="geometry">
      <rect>
       <x>330</x>
@@ -273,17 +307,20 @@ background-color: black;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: black;</string>
+     <string notr="true"/>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="pomodoro.qrc">:/Pomodoro/seperator.png</pixmap>
     </property>
    </widget>
    <widget class="QPushButton" name="qtAbout">
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>340</y>
+      <y>270</y>
       <width>21</width>
       <height>23</height>
      </rect>
@@ -295,8 +332,8 @@ background-color: black;
    <widget class="QPushButton" name="audioSelectButton">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>250</y>
+      <x>18</x>
+      <y>172</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -308,15 +345,15 @@ background-color: black;
    <widget class="QWidget" name="horizontalLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>290</y>
+      <x>18</x>
+      <y>212</y>
       <width>160</width>
       <height>41</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="volumeLayout" stretch="1,0">
      <property name="spacing">
-      <number>1</number>
+      <number>3</number>
      </property>
      <property name="sizeConstraint">
       <enum>QLayout::SetFixedSize</enum>
@@ -370,8 +407,8 @@ background-color: black;
    <widget class="QPushButton" name="testAudio">
     <property name="geometry">
      <rect>
-      <x>192</x>
-      <y>298</y>
+      <x>180</x>
+      <y>218</y>
       <width>21</width>
       <height>23</height>
      </rect>
@@ -383,39 +420,83 @@ background-color: black;
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>290</y>
-      <width>247</width>
-      <height>53</height>
+      <x>260</x>
+      <y>210</y>
+      <width>256</width>
+      <height>55</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="spacing">
+      <number>6</number>
+     </property>
      <property name="sizeConstraint">
-      <enum>QLayout::SetDefaultConstraint</enum>
+      <enum>QLayout::SetFixedSize</enum>
      </property>
      <item>
-      <widget class="QComboBox" name="presetBox"/>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,1,1,1">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="sizeConstraint">
+        <enum>QLayout::SetFixedSize</enum>
+       </property>
+       <property name="leftMargin">
+        <number>3</number>
+       </property>
        <item>
-        <widget class="QPushButton" name="savePreset">
+        <widget class="QComboBox" name="presetBox">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
          <property name="minimumSize">
           <size>
-           <width>5</width>
-           <height>0</height>
+           <width>245</width>
+           <height>20</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>100</width>
-           <height>16777215</height>
+           <width>245</width>
+           <height>20</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,0,0,0">
+       <property name="spacing">
+        <number>6</number>
+       </property>
+       <property name="sizeConstraint">
+        <enum>QLayout::SetFixedSize</enum>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QPushButton" name="savePreset">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>35</width>
+           <height>23</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>35</width>
+           <height>23</height>
           </size>
          </property>
          <property name="text">
@@ -426,21 +507,21 @@ background-color: black;
        <item>
         <widget class="QPushButton" name="loadPreset">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
          <property name="minimumSize">
           <size>
-           <width>5</width>
-           <height>0</height>
+           <width>35</width>
+           <height>23</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>100</width>
-           <height>16777215</height>
+           <width>35</width>
+           <height>23</height>
           </size>
          </property>
          <property name="text">
@@ -450,16 +531,22 @@ background-color: black;
        </item>
        <item>
         <widget class="QPushButton" name="deletePreset">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="minimumSize">
           <size>
-           <width>10</width>
-           <height>0</height>
+           <width>35</width>
+           <height>23</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>100</width>
-           <height>16777215</height>
+           <width>35</width>
+           <height>23</height>
           </size>
          </property>
          <property name="text">
@@ -487,20 +574,6 @@ background-color: black;
      </item>
     </layout>
    </widget>
-   <zorder>LCDmm</zorder>
-   <zorder>LCDhh</zorder>
-   <zorder>LCDss</zorder>
-   <zorder>horizontalLayoutWidget</zorder>
-   <zorder>setButton</zorder>
-   <zorder>separatorBG_1</zorder>
-   <zorder>separatorColon_1</zorder>
-   <zorder>separatorBG_2</zorder>
-   <zorder>separatorColon_2</zorder>
-   <zorder>qtAbout</zorder>
-   <zorder>audioSelectButton</zorder>
-   <zorder>horizontalLayoutWidget_2</zorder>
-   <zorder>testAudio</zorder>
-   <zorder>verticalLayoutWidget</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

@@ -1,4 +1,6 @@
 <RCC>
-    <qresource prefix="Pomodoro">
-    </qresource>
+  <qresource prefix="Pomodoro">
+    <file>seperator.png</file>
+    <file>downArrow.png</file>
+  </qresource>
 </RCC>
