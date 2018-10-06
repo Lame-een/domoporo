@@ -10,6 +10,9 @@ class Pomodoro : public QMainWindow
 {
 	Q_OBJECT
 
+private:
+	bool collapsed = false;
+
 public:
 	Pomodoro(QWidget *parent = Q_NULLPTR);
 
@@ -26,10 +29,13 @@ public slots:
 	void setVolume(int);
 
 	void qtAbout();
+	void about();
 
 	void loadPreset();
 	void saveCurrent();
 	void deletePreset();
+
+	void collapse();
 private:
 	Ui::PomodoroClass ui;
 	Timer LCDTimer;

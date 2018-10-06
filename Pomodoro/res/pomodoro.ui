@@ -6,20 +6,26 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>618</width>
+    <width>551</width>
     <height>295</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="minimumSize">
    <size>
-    <width>618</width>
-    <height>295</height>
+    <width>551</width>
+    <height>165</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>618</width>
-    <height>323</height>
+    <width>551</width>
+    <height>295</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -31,14 +37,37 @@
     color: #ffffff;
 }
 
-QPushButton {
+QPushButton{
     color: #ffffff;
     background-color: #333334;
+}
+
+QPushButton#startButton,#stopButton,#pauseButton,#setButton,#testAudio,#deletePreset,#loadPreset,#savePreset,#qtAbout,#audioSelectButton,#collapseButton,#aboutButton {
     border: none;
+}
+
+QPushButton#collapseButton{
+    background-image: url(:/Pomodoro/collapseOpen.png);
+}
+
+QPushButton#collapseButton:checked{
+    background-image: url(:/Pomodoro/collapseClosed.png);
 }
 
 QPushButton:hover {
     background-color: #464649;
+}
+
+QPushButton#stopButton{
+	background-image: url(:/Pomodoro/stopButton.png);
+}
+
+QPushButton#startButton{
+	background-image: url(:/Pomodoro/playButton.png);
+}
+
+QPushButton#pauseButton{
+	background-image: url(:/Pomodoro/pauseButton.png);
 }
 
 QLineEdit {
@@ -104,7 +133,7 @@ QComboBox::down-arrow {
    <widget class="QLCDNumber" name="LCDmm">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>179</x>
       <y>20</y>
       <width>141</width>
       <height>128</height>
@@ -142,7 +171,7 @@ background-color: black;
    <widget class="QLCDNumber" name="LCDhh">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>9</x>
       <y>20</y>
       <width>141</width>
       <height>128</height>
@@ -172,7 +201,7 @@ background-color: black;
    <widget class="QLCDNumber" name="LCDss">
     <property name="geometry">
      <rect>
-      <x>360</x>
+      <x>349</x>
       <y>20</y>
       <width>151</width>
       <height>128</height>
@@ -202,74 +231,11 @@ background-color: black;
      <double>88.000000000000000</double>
     </property>
    </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>520</x>
-      <y>30</y>
-      <width>77</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
-     <property name="spacing">
-      <number>15</number>
-     </property>
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QPushButton" name="startButton">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Start</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pauseButton">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Pause</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="stopButton">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>Stop</string>
-       </property>
-       <property name="default">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QPushButton" name="setButton">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>160</y>
+      <x>439</x>
+      <y>175</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -281,7 +247,7 @@ background-color: black;
    <widget class="QLabel" name="separator_1">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>149</x>
       <y>20</y>
       <width>30</width>
       <height>128</height>
@@ -300,7 +266,7 @@ background-color: black;
    <widget class="QLabel" name="separator_2">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>319</x>
       <y>20</y>
       <width>30</width>
       <height>128</height>
@@ -320,8 +286,8 @@ background-color: black;
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>270</y>
-      <width>21</width>
+      <y>272</y>
+      <width>23</width>
       <height>23</height>
      </rect>
     </property>
@@ -333,13 +299,13 @@ background-color: black;
     <property name="geometry">
      <rect>
       <x>18</x>
-      <y>172</y>
+      <y>175</y>
       <width>75</width>
       <height>23</height>
      </rect>
     </property>
     <property name="text">
-     <string>SetAudio</string>
+     <string>Set alarm</string>
     </property>
    </widget>
    <widget class="QWidget" name="horizontalLayoutWidget_2">
@@ -409,12 +375,18 @@ background-color: black;
      <rect>
       <x>180</x>
       <y>218</y>
-      <width>21</width>
+      <width>31</width>
       <height>23</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <property name="text">
-     <string>T</string>
+     <string>Test</string>
     </property>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget">
@@ -573,6 +545,134 @@ background-color: black;
       </layout>
      </item>
     </layout>
+   </widget>
+   <widget class="QPushButton" name="collapseButton">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>150</y>
+      <width>551</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="aboutButton">
+    <property name="geometry">
+     <rect>
+      <x>25</x>
+      <y>272</y>
+      <width>23</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>i</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="stopButton">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>106</y>
+      <width>42</width>
+      <height>42</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>42</width>
+      <height>42</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>42</width>
+      <height>42</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pauseButton">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>63</y>
+      <width>42</width>
+      <height>42</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>42</width>
+      <height>42</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>42</width>
+      <height>42</height>
+     </size>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="startButton">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>20</y>
+      <width>42</width>
+      <height>42</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>42</width>
+      <height>42</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>42</width>
+      <height>42</height>
+     </size>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
   </widget>
  </widget>

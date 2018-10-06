@@ -1,5 +1,10 @@
 <RCC>
   <qresource prefix="Pomodoro">
+    <file>pauseButton.png</file>
+    <file>playButton.png</file>
+    <file>stopButton.png</file>
+    <file>collapseClosed.png</file>
+    <file>collapseOpen.png</file>
     <file>seperator.png</file>
     <file>downArrow.png</file>
   </qresource>

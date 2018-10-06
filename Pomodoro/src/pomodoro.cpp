@@ -7,6 +7,7 @@ Pomodoro::Pomodoro(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
+	setWindowFlags(Qt::Widget | Qt::MSWindowsFixedSizeDialogHint);
 
 	connect(ui.startButton, &QPushButton::released, this, &Pomodoro::startTimer);
 	connect(ui.stopButton, &QPushButton::released, this, &Pomodoro::stopTimer);
@@ -17,12 +18,15 @@ Pomodoro::Pomodoro(QWidget *parent)
 	connect(ui.testAudio, &QPushButton::released, this, [this]{LCDTimer.player.playAudio();});
 
 	connect(ui.qtAbout, &QPushButton::released, this, &Pomodoro::qtAbout);
+	connect(ui.aboutButton, &QPushButton::released, this, &Pomodoro::about);
 
 	connect(ui.volumeSlider, &QSlider::valueChanged, this, [this]{setVolume(ui.volumeSlider->value());});	//lambda expression used to avoid declaring another function inside the Pomodoro class
 
 	connect(ui.savePreset, &QPushButton::released, this, &Pomodoro::saveCurrent);
 	connect(ui.loadPreset, &QPushButton::released, this, &Pomodoro::loadPreset);
 	connect(ui.deletePreset, &QPushButton::released, this, &Pomodoro::deletePreset);
+
+	connect(ui.collapseButton, &QPushButton::released, this, &Pomodoro::collapse);
 
 	initCombo();
 	initTimer();
@@ -31,6 +35,11 @@ Pomodoro::Pomodoro(QWidget *parent)
 void Pomodoro::qtAbout()
 {
 	QMessageBox::aboutQt(this, "About Qt");
+}
+
+void Pomodoro::about()
+{
+	QMessageBox::about(this, "About DomoPoro", "LOREM IPSUM");
 }
 
 void Pomodoro::initTimer()
@@ -109,6 +118,7 @@ void Pomodoro::selectAudio()
 void Pomodoro::setVolume(int in)
 {
 	ui.volumeValue->setText(QString::number(in));
+	ui.volumeSlider->setValue(in);
 	LCDTimer.player.setVolume(in);
 }
 
@@ -166,4 +176,18 @@ void Pomodoro::deletePreset()
 	ui.presetBox->removeItem(index);
 	sManager.removePreset(index);
 	sManager.saveData();
+}
+
+void Pomodoro::collapse()
+{
+	if(!collapsed)
+	{
+		this->resize(551, 165);
+		collapsed = true;
+	}
+	else
+	{
+		this->resize(551, 295);
+		collapsed = false;
+	}
 }
