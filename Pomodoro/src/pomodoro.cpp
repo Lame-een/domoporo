@@ -6,6 +6,7 @@
 Pomodoro::Pomodoro(QWidget *parent)
 	: QMainWindow(parent)
 {
+	setWindowIcon(QIcon(":/Pomodoro/domoPoro.ico"));
 	ui.setupUi(this);
 	setWindowFlags(Qt::Widget | Qt::MSWindowsFixedSizeDialogHint);
 

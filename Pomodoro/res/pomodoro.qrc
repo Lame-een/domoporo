@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="Pomodoro">
+    <file>domoPoro.ico</file>
     <file>pauseButton.png</file>
     <file>playButton.png</file>
     <file>stopButton.png</file>
