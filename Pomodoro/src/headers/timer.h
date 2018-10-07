@@ -20,7 +20,6 @@ class Timer
 private:
 	std::thread* tThread;
 	
-	bool running = false;
 	bool zeroTimer = true;
 	bool setZero = true;
 
@@ -36,6 +35,9 @@ public:
 	{
 		pauseTimer();	//safety pause to kill the thread
 	}
+
+	bool running = false;
+
 	//object used to contain and play the alarm
 	AudioPlayer player;
 

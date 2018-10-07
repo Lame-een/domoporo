@@ -2,6 +2,7 @@
 #include <QMainWindow>
 #include <QInputDialog>
 #include <QFileDialog>
+#include <QShortcut>
 #include "ui_pomodoro.h"
 #include "timer.h"
 #include "saveManager.h"
@@ -18,7 +19,9 @@ public:
 
 	void initTimer();
 	void initCombo();
+	bool getTimerStatus();
 
+	QShortcut *pauseUnpauseShortcut = new QShortcut(QKeySequence("Space"), this);
 public slots:
 	void startTimer();
 	void pauseTimer();

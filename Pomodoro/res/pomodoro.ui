@@ -29,7 +29,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Pomodoro</string>
+   <string>DomoPoro</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget {

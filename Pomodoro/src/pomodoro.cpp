@@ -28,6 +28,8 @@ Pomodoro::Pomodoro(QWidget *parent)
 
 	connect(ui.collapseButton, &QPushButton::released, this, &Pomodoro::collapse);
 
+	connect(pauseUnpauseShortcut, &QShortcut::activated, this, [this]{getTimerStatus() ? pauseTimer() : startTimer();});
+
 	initCombo();
 	initTimer();
 }
@@ -190,4 +192,9 @@ void Pomodoro::collapse()
 		this->resize(551, 295);
 		collapsed = false;
 	}
+}
+
+bool Pomodoro::getTimerStatus()
+{
+	return LCDTimer.running;
 }
