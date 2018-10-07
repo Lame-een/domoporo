@@ -2,9 +2,11 @@
 
 A pomodoro type timer for studying, work, practice.
 
-## WIP
-
-This project is still work in progress.
+## Features
+* A settable timer
+* Start/Pause/Stop control
+* Custom alarm sounds together with the ability to set their volume
+* Presets to save your timer
 
 ## Built With
 
