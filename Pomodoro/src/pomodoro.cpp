@@ -42,7 +42,7 @@ void Pomodoro::qtAbout()
 
 void Pomodoro::about()
 {
-	QMessageBox::about(this, "About DomoPoro", "LOREM IPSUM");
+	QMessageBox::about(this, "About DomoPoro", "DomoPoro version 1.0\n\nDomoPoro is licensed under the GNU General Public License v3.0\n\n\n\n");
 }
 
 void Pomodoro::initTimer()
