@@ -2,7 +2,7 @@
 
 A pomodoro type timer for studying, work, practice.
 
-## Installation
+## Downloads
 Head over to the release tab on this repo or [click this link](https://github.com/Lame-een/domoporo/releases)
 
 ## Features
