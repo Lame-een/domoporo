@@ -155,7 +155,7 @@ void Pomodoro::loadPreset()
 void Pomodoro::saveCurrent()
 {
 	bool ok;
-	QString name = QInputDialog::getText(this, "Timer name", "Enter timer name", QLineEdit::Normal, "TEST", &ok, Qt::MSWindowsFixedSizeDialogHint);
+	QString name = QInputDialog::getText(this, "Timer name", "Enter timer name", QLineEdit::Normal, "Timer", &ok, Qt::MSWindowsFixedSizeDialogHint);
 
 	if(ok)
 	{
