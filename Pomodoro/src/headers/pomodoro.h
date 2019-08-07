@@ -13,6 +13,11 @@ class Pomodoro : public QMainWindow
 
 private:
 	bool collapsed = false;
+	const int c_windowWidth = 545;
+	const int c_windowCollapsedHeight = 181;
+	const int c_windowHeight = 299;
+
+	int buttonAssignedIndex[3] = {0, 1, 2};
 
 public:
 	Pomodoro(QWidget *parent = Q_NULLPTR);
@@ -34,11 +39,14 @@ public slots:
 	void qtAbout();
 	void about();
 
-	void loadPreset();
+	//void loadPreset(); depreciated
+	void assignPreset(int buttonIndex);
 	void saveCurrent();
 	void deletePreset();
+	void loadAlarm(int buttonIndex);
 
 	void collapse();
+
 private:
 	Ui::PomodoroClass ui;
 	Timer LCDTimer;

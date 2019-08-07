@@ -24,8 +24,16 @@ Pomodoro::Pomodoro(QWidget *parent)
 	connect(ui.volumeSlider, &QSlider::valueChanged, this, [this]{setVolume(ui.volumeSlider->value());});	//lambda expression used to avoid declaring another function inside the Pomodoro class
 
 	connect(ui.savePreset, &QPushButton::released, this, &Pomodoro::saveCurrent);
-	connect(ui.loadPreset, &QPushButton::released, this, &Pomodoro::loadPreset);
 	connect(ui.deletePreset, &QPushButton::released, this, &Pomodoro::deletePreset);
+	//connect(ui.loadPreset, &QPushButton::released, this, &Pomodoro::loadPreset); depreciated
+
+	connect(ui.assignToAlarm1, &QPushButton::released, this, [this](){assignPreset(0);});
+	connect(ui.assignToAlarm2, &QPushButton::released, this, [this](){assignPreset(1);});
+	connect(ui.assignToAlarm3, &QPushButton::released, this, [this](){assignPreset(2);});
+
+	connect(ui.loadAlarm1, &QPushButton::released, this, [this](){loadAlarm(0);});
+	connect(ui.loadAlarm2, &QPushButton::released, this, [this](){loadAlarm(1);});
+	connect(ui.loadAlarm3, &QPushButton::released, this, [this](){loadAlarm(2);});
 
 	connect(ui.collapseButton, &QPushButton::released, this, &Pomodoro::collapse);
 
@@ -33,6 +41,10 @@ Pomodoro::Pomodoro(QWidget *parent)
 
 	initCombo();
 	initTimer();
+	if(!collapsed)
+	{
+		collapse();
+	}
 }
 
 void Pomodoro::qtAbout()
@@ -42,7 +54,7 @@ void Pomodoro::qtAbout()
 
 void Pomodoro::about()
 {
-	QMessageBox::about(this, "About DomoPoro", "DomoPoro version 1.0\n\nDomoPoro is licensed under the GNU General Public License v3.0\n\n\n\n");
+	QMessageBox::about(this, "About DomoPoro", "DomoPoro version 1.1\n\nDomoPoro is licensed under the GNU General Public License v3.0\n\n\n\n");
 }
 
 void Pomodoro::initTimer()
@@ -135,6 +147,50 @@ void Pomodoro::initCombo()
 	}
 }
 
+void Pomodoro::loadAlarm(int buttonIndex)
+{
+	if(buttonIndex < 0)
+	{
+		return;
+	}
+	int index = buttonAssignedIndex[buttonIndex];
+
+	if(index < 0)
+	{
+		return;
+	}
+
+	if(index > sManager.presets.size() - 1)
+	{
+		//LCDTimer.name = sManager.presets[index].name;
+		LCDTimer.setTime(0,0,0);
+		//LCDTimer.player.setAudio(sManager.presets[index].path);
+		//setVolume(sManager.presets[index].volume);
+	}
+	else
+	{
+		trip& time = sManager.presets[index].time;
+
+		LCDTimer.name = sManager.presets[index].name;
+		LCDTimer.setTime(time.hh, time.mm, time.ss);
+		LCDTimer.player.setAudio(sManager.presets[index].path);
+		setVolume(sManager.presets[index].volume);
+
+		startTimer();
+	}
+
+}
+
+void Pomodoro::assignPreset(int buttonIndex)
+{
+	int currIndex = ui.presetBox->currentIndex();
+	if(currIndex >= 0)
+	{
+		buttonAssignedIndex[buttonIndex] = currIndex;
+	}
+}
+
+/*
 void Pomodoro::loadPreset()
 {
 	int index = ui.presetBox->currentIndex();
@@ -151,6 +207,7 @@ void Pomodoro::loadPreset()
 	LCDTimer.player.setAudio(sManager.presets[index].path);
 	setVolume(sManager.presets[index].volume);
 }
+*/
 
 void Pomodoro::saveCurrent()
 {
@@ -185,12 +242,12 @@ void Pomodoro::collapse()
 {
 	if(!collapsed)
 	{
-		this->resize(551, 165);
+		this->resize(c_windowWidth, c_windowCollapsedHeight);
 		collapsed = true;
 	}
 	else
 	{
-		this->resize(551, 295);
+		this->resize(c_windowWidth, c_windowHeight);
 		collapsed = false;
 	}
 }

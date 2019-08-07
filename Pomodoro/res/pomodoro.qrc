@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="Pomodoro">
+    <file>clockIcon1.png</file>
+    <file>clockIcon2.png</file>
+    <file>clockIcon3.png</file>
     <file>domoPoro.ico</file>
     <file>pauseButton.png</file>
     <file>playButton.png</file>
