@@ -23,7 +23,9 @@ private:
 	void readTime();
 	void readPath();
 	void readVolume();
+	void readQuickLoadButtons();
 	void saveTimer(SaveData&);
+	void saveButtonIndex();
 
 	QString pathToFile = ".\\data\\save.xml";
 
@@ -32,6 +34,7 @@ private:
 	QXmlStreamReader reader;
 	QXmlStreamWriter writeStream;
 public:
+	int* buttonArray = nullptr;
 	void readSaveFile();
 	void saveData();
 

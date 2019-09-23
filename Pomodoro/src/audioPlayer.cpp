@@ -12,9 +12,24 @@ void AudioPlayer::stopAudio()
 
 void AudioPlayer::setAudio(QString in)
 {
-	path = in;
-	player.setMedia(QUrl::fromLocalFile(path));
-	player.setVolume(volume);
+	QFile file(in);
+	if(file.exists())
+	{
+		player.setMedia(QUrl::fromLocalFile(in));
+		player.setVolume(volume);
+	}
+	else if(in != "")
+	{
+		QMessageBox::critical(nullptr, "Error", "Media file in save not found.", QMessageBox::Ok);
+
+		file.close();
+		QFile file(in);
+		if(file.exists())
+		{
+			player.setMedia(QUrl::fromLocalFile(defPath));
+			player.setVolume(50);
+		}
+	}
 }
 
 void AudioPlayer::setVolume(int vol)

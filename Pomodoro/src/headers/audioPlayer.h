@@ -1,6 +1,7 @@
 #pragma once
-
+#include <QFile>
 #include <QMediaPlayer>
+#include <QMessageBox>
 #include <QString>
 
 class AudioPlayer
@@ -9,16 +10,16 @@ private:
 	QString path;
 	QMediaPlayer player;
 
+	QString defPath = ".\\data\\alarms\\oth_def.wav";
 
 public:
 	AudioPlayer()
 	{
-		setAudio(".\\data\\alarms\\oth_def.wav");
 	}
 	~AudioPlayer()
 	{
 	}
-	int volume;
+	int volume = 50;
 
 public slots:
 	void setAudio(QString);

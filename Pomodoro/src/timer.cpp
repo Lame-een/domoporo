@@ -71,7 +71,7 @@ void Timer::setTime(int hh, int mm, int ss)
 		running = false;
 		initTime = (hh * 3600 + mm * 60 + ss)*1000 + 500;
 		
-		if(initTime != 0)
+		if(initTime > 500)
 		{
 			setZero = false;
 			zeroTimer = false;

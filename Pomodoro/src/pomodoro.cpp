@@ -1,7 +1,4 @@
-#include <QPushButton>
-#include <QSlider>
 #include "headers/pomodoro.h"
-#include "headers/saveManager.h"
 
 Pomodoro::Pomodoro(QWidget *parent)
 	: QMainWindow(parent)
@@ -39,7 +36,9 @@ Pomodoro::Pomodoro(QWidget *parent)
 
 	connect(pauseUnpauseShortcut, &QShortcut::activated, this, [this]{getTimerStatus() ? pauseTimer() : startTimer();});
 
-	initCombo();
+	sManager.buttonArray = buttonAssignedIndex;
+
+	initSaves();
 	initTimer();
 	if(!collapsed)
 	{
@@ -63,28 +62,8 @@ void Pomodoro::initTimer()
 	LCDTimer.minDisp = ui.LCDmm;
 	LCDTimer.secDisp = ui.LCDss;
 
-	int volume;
-	if(sManager.presets.size() > 0)
-	{
-		QString& name = sManager.presets[0].name;
-		trip& time = sManager.presets[0].time;
-		QString& path = sManager.presets[0].path;
-		volume = sManager.presets[0].volume;
-
-		LCDTimer.player.setAudio(path);
-		LCDTimer.name = name;
-		LCDTimer.setTime(time.hh, time.mm, time.ss);
-	}
-	else
-	{
-		LCDTimer.name = "defName";
-		LCDTimer.setTime(0, 25, 0);
-
-		volume = 50;
-	}
-
-	setVolume(volume);
-	ui.volumeSlider->setValue(volume);
+	loadAlarm(buttonAssignedIndex[0]);
+	stopTimer();
 }
 
 void Pomodoro::setTimer()
@@ -137,7 +116,7 @@ void Pomodoro::setVolume(int in)
 	LCDTimer.player.setVolume(in);
 }
 
-void Pomodoro::initCombo()
+void Pomodoro::initSaves()
 {
 	sManager.readSaveFile();
 
@@ -149,23 +128,15 @@ void Pomodoro::initCombo()
 
 void Pomodoro::loadAlarm(int buttonIndex)
 {
-	if(buttonIndex < 0)
+	if(buttonIndex < 0 || buttonIndex > 2)
 	{
 		return;
 	}
-	int index = buttonAssignedIndex[buttonIndex];
+	int& index = buttonAssignedIndex[buttonIndex];
 
-	if(index < 0)
+	if(index > sManager.presets.size() - 1 || index < 0)
 	{
-		return;
-	}
-
-	if(index > sManager.presets.size() - 1)
-	{
-		//LCDTimer.name = sManager.presets[index].name;
-		LCDTimer.setTime(0,0,0);
-		//LCDTimer.player.setAudio(sManager.presets[index].path);
-		//setVolume(sManager.presets[index].volume);
+		LCDTimer.setTime(0, 0, 0);
 	}
 	else
 	{
@@ -176,9 +147,10 @@ void Pomodoro::loadAlarm(int buttonIndex)
 		LCDTimer.player.setAudio(sManager.presets[index].path);
 		setVolume(sManager.presets[index].volume);
 
+		ui.presetBox->setCurrentIndex(index);
+
 		startTimer();
 	}
-
 }
 
 void Pomodoro::assignPreset(int buttonIndex)
@@ -187,6 +159,7 @@ void Pomodoro::assignPreset(int buttonIndex)
 	if(currIndex >= 0)
 	{
 		buttonAssignedIndex[buttonIndex] = currIndex;
+		sManager.saveData();
 	}
 }
 
@@ -194,7 +167,7 @@ void Pomodoro::assignPreset(int buttonIndex)
 void Pomodoro::loadPreset()
 {
 	int index = ui.presetBox->currentIndex();
-	
+
 	if(index < 0)
 	{
 		return;

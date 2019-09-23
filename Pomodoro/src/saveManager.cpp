@@ -47,6 +47,29 @@ void SaveManager::readVolume()
 	curSave.volume = val;
 }
 
+void SaveManager::readQuickLoadButtons()
+{
+	while(reader.readNextStartElement())
+	{
+		if(reader.name() == "alarm")
+		{
+			buttonArray[0] = reader.readElementText().toInt();
+		}
+		else if(reader.name() == "shortBreak")
+		{
+			buttonArray[1] = reader.readElementText().toInt();
+		}
+		else if(reader.name() == "longBreak")
+		{
+			buttonArray[2] = reader.readElementText().toInt();
+		}
+		else
+		{
+			reader.skipCurrentElement();
+		}
+	}
+}
+
 void SaveManager::readSaveFile()
 {
 	QFile file(pathToFile);
@@ -67,7 +90,6 @@ void SaveManager::readSaveFile()
 				{
 					while(reader.readNextStartElement())
 					{
-
 						if(reader.name() == "name")
 						{
 							readName();
@@ -89,12 +111,16 @@ void SaveManager::readSaveFile()
 							reader.skipCurrentElement();
 						}
 					}
+					presets.push_back(curSave);
+				}
+				else if(reader.name() == "quickButton")
+				{
+					readQuickLoadButtons();
 				}
 				else
 				{
 					reader.skipCurrentElement();
 				}
-				presets.push_back(curSave);
 			}
 
 
@@ -124,6 +150,15 @@ void SaveManager::saveTimer(SaveData& timerData)
 	writeStream.writeEndElement(); //close timer element - the timer save
 }
 
+void SaveManager::saveButtonIndex()
+{
+	writeStream.writeStartElement("quickButton");
+	writeStream.writeTextElement("alarm", QString::number(buttonArray[0]));
+	writeStream.writeTextElement("shortBreak", QString::number(buttonArray[1]));
+	writeStream.writeTextElement("longBreak", QString::number(buttonArray[2]));
+	writeStream.writeEndElement();
+}
+
 void SaveManager::saveData()
 {
 	QFile file(pathToFile);
@@ -138,6 +173,8 @@ void SaveManager::saveData()
 
 	writeStream.writeStartDocument();
 	writeStream.writeStartElement("saveData");
+
+	saveButtonIndex();
 
 	for(int i = 0; i < presets.size(); i++)
 	{

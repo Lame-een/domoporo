@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <saveData>
-    <timer>
-        <name>Pomodoro</name>
-        <time>
-            <hh>0</hh>
-            <mm>25</mm>
-            <ss>0</ss>
-        </time>
-        <audioPath>./data/alarms/oth_def.wav</audioPath>
-        <audioVolume>50</audioVolume>
-    </timer>
-    <timer>
-        <name>Short break</name>
-        <time>
-            <hh>0</hh>
-            <mm>5</mm>
-            <ss>0</ss>
-        </time>
-        <audioPath>./data/alarms/def.wav</audioPath>
-        <audioVolume>50</audioVolume>
-    </timer>
-    <timer>
-        <name>Long break</name>
-        <time>
-            <hh>0</hh>
-            <mm>15</mm>
-            <ss>0</ss>
-        </time>
-        <audioPath>./data/alarms/def.wav</audioPath>
-        <audioVolume>50</audioVolume>
-    </timer>
+  <quickButton>
+    <alarm>0</alarm>
+    <shortBreak>1</shortBreak>
+    <longBreak>2</longBreak>
+  </quickButton>
+  <timer>
+    <name>Pomodoro</name>
+    <time>
+      <hh>0</hh>
+      <mm>25</mm>
+      <ss>0</ss>
+    </time>
+    <audioPath>./data/alarms/oth_def.wav</audioPath>
+    <audioVolume>50</audioVolume>
+  </timer>
+  <timer>
+    <name>Short break</name>
+    <time>
+      <hh>0</hh>
+      <mm>5</mm>
+      <ss>0</ss>
+    </time>
+    <audioPath>./data/alarms/def.wav</audioPath>
+    <audioVolume>50</audioVolume>
+  </timer>
+  <timer>
+    <name>Long break</name>
+    <time>
+      <hh>0</hh>
+      <mm>15</mm>
+      <ss>0</ss>
+    </time>
+    <audioPath>./data/alarms/def.wav</audioPath>
+    <audioVolume>50</audioVolume>
+  </timer>
 </saveData>
