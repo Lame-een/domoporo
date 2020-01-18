@@ -46,6 +46,7 @@ public slots:
 	void saveCurrent();
 	void deletePreset();
 	void loadAlarm(int buttonIndex);
+	void displayToLCD(trip& time);
 
 	void collapse();
 

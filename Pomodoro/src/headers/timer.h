@@ -5,6 +5,7 @@
 #include<QString>
 #include<QMessageBox>
 #include "AudioPlayer.h"
+//#include "pomodoro.h"
 
 typedef long long int lli;
 
@@ -15,8 +16,9 @@ struct trip
 	int ss = 0;
 };
 
-class Timer
+class Timer : public QObject
 {
+	Q_OBJECT
 private:
 	std::thread* tThread;
 	
@@ -44,20 +46,14 @@ public:
 	//timer name used for saves
 	QString name = "defName";
 
-	//pointers to the segments of the LCDDiplay
-	QLCDNumber *hourDisp;
-	QLCDNumber *minDisp;
-	QLCDNumber *secDisp;
-
 	//beginning values of the timer, used to save as a preset
 	trip setVals;
+	trip currVals;
 
 	void setTime(int, int, int);	//function to set the display, save values and reset the timer
-	void getTime();		//function which calculates the current time and calls setDisplay
+	trip getTime();		//function which calculates the current time and signals the main class to display the time
+	void displayTime();
 
-	trip getCurrTime();
-	
-	void setDisplay(int, int, int);    //handles the LCD display values
 
 	void pauseTimer();
 	void stopTimer();
@@ -65,4 +61,7 @@ public:
 	void timerExec();    //worker thread which calculates the time left
 
 	void endThread();
+
+signals:
+	void displaySignal();
 };

@@ -25,36 +25,6 @@ void Timer::stopTimer()
 	player.stopAudio();
 }
 
-void Timer::setDisplay(int hh, int mm, int ss)
-{
-	if(hh < 10)
-	{
-		hourDisp->display("0" + QString::number(hh));
-	}
-	else
-	{
-		hourDisp->display(hh);
-	}
-
-	if(mm < 10)
-	{
-		minDisp->display("0" + QString::number(mm));
-	}
-	else
-	{
-		minDisp->display(mm);
-	}
-
-	if(ss < 10)
-	{
-		secDisp->display("0" + QString::number(ss));
-	}
-	else
-	{
-		secDisp->display(ss);
-	}
-}
-
 void Timer::setTime(int hh, int mm, int ss)
 {
 	if(mm > 59 || ss > 59)
@@ -66,7 +36,10 @@ void Timer::setTime(int hh, int mm, int ss)
 		setVals.hh = hh;
 		setVals.mm = mm;
 		setVals.ss = ss;
-		setDisplay(hh, mm, ss);
+		currVals.hh = hh;
+		currVals.mm = mm;
+		currVals.ss = ss;
+		displaySignal();
 
 		running = false;
 		initTime = (hh * 3600 + mm * 60 + ss)*1000 + 500;
@@ -86,31 +59,23 @@ void Timer::setTime(int hh, int mm, int ss)
 	}
 }
 
-void Timer::getTime()
+trip Timer::getTime()
 {
 	lli timeCpy = timeLeft;
 	timeCpy /= 1000;
-	int hh = timeCpy / 3600;
+	currVals.hh = timeCpy / 3600;
 	timeCpy %= 3600;
-	int mm = timeCpy / 60;
+	currVals.mm = timeCpy / 60;
 	timeCpy %= 60;
-	int ss = timeCpy;
+	currVals.ss = timeCpy;
 
-	setDisplay(hh, mm, ss);
+	return currVals;
 }
 
-trip Timer::getCurrTime()
+void Timer::displayTime()
 {
-	trip ret;
-	lli timeCpy = timeLeft;
-	timeCpy /= 1000;
-	ret.hh = timeCpy / 3600;
-	timeCpy %= 3600;
-	ret.mm = timeCpy / 60;
-	timeCpy %= 60;
-	ret.ss = timeCpy;
-
-	return ret;
+	getTime();
+	displaySignal();
 }
 
 void Timer::startTimer()
@@ -156,7 +121,7 @@ void Timer::timerExec()
 			return;
 		}
 
-		getTime();
+		displayTime();
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 	}

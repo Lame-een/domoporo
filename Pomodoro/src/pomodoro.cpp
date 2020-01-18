@@ -36,6 +36,8 @@ Pomodoro::Pomodoro(QWidget *parent)
 
 	connect(pauseUnpauseShortcut, &QShortcut::activated, this, [this]{getTimerStatus() ? pauseTimer() : startTimer();});
 
+	connect(&LCDTimer, &Timer::displaySignal, this, [this]{displayToLCD(LCDTimer.currVals);});
+
 	sManager.buttonArray = buttonAssignedIndex;
 
 	initSaves();
@@ -58,9 +60,9 @@ void Pomodoro::about()
 
 void Pomodoro::initTimer()
 {
-	LCDTimer.hourDisp = ui.LCDhh;
-	LCDTimer.minDisp = ui.LCDmm;
-	LCDTimer.secDisp = ui.LCDss;
+	//LCDTimer.hourDisp = ui.LCDhh;
+	//LCDTimer.minDisp = ui.LCDmm;
+	//LCDTimer.secDisp = ui.LCDss;
 
 	loadAlarm(buttonAssignedIndex[0]);
 	stopTimer();
@@ -189,7 +191,7 @@ void Pomodoro::saveCurrent()
 
 	if(ok)
 	{
-		trip timeVals = LCDTimer.getCurrTime();
+		trip timeVals = LCDTimer.getTime();
 		sManager.appendSave(name, timeVals, LCDTimer.player.getPath(), LCDTimer.player.volume);
 		sManager.saveData();
 		ui.presetBox->addItem(name, Qt::DisplayRole);
@@ -228,4 +230,37 @@ void Pomodoro::collapse()
 bool Pomodoro::getTimerStatus()
 {
 	return LCDTimer.running;
+}
+
+void Pomodoro::displayToLCD(trip& time)
+{
+	QLCDNumber*& hhDisplay = ui.LCDhh;
+	QLCDNumber*& mmDisplay = ui.LCDmm;
+	QLCDNumber*& ssDisplay = ui.LCDss;
+	if(time.hh < 10)
+	{
+		hhDisplay->display("0" + QString::number(time.hh));
+	}
+	else
+	{
+		hhDisplay->display(time.hh);
+	}
+
+	if(time.mm < 10)
+	{
+		mmDisplay->display("0" + QString::number(time.mm));
+	}
+	else
+	{
+		mmDisplay->display(time.mm);
+	}
+
+	if(time.ss < 10)
+	{
+		ssDisplay->display("0" + QString::number(time.ss));
+	}
+	else
+	{
+		ssDisplay->display(time.ss);
+	}
 }
