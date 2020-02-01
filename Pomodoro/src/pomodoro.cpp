@@ -55,7 +55,7 @@ void Pomodoro::qtAbout()
 
 void Pomodoro::about()
 {
-	QMessageBox::about(this, "About DomoPoro", "DomoPoro version 1.1\n\nDomoPoro is licensed under the GNU General Public License v3.0\n\n\n\n");
+	QMessageBox::about(this, "About DomoPoro", "DomoPoro version 1.2.2\n\nDomoPoro is licensed under the GNU General Public License v3.0\n\n\n\n");
 }
 
 void Pomodoro::initTimer()
@@ -107,7 +107,7 @@ void Pomodoro::startTimer()
 
 void Pomodoro::selectAudio()
 {
-	QString filename = QFileDialog::getOpenFileName(this, tr("Select alarm"), LCDTimer.player.getPath(), "Microsoft Wave (*.wav);;MPEG-3 (*.mp3);;All files (*.*)");
+	QString filename = QFileDialog::getOpenFileName(this, tr("Select alarm"), LCDTimer.player.getPath(), "All files (*.*);;MPEG-3 (*.mp3);;Microsoft Wave (*.wav)");
 	LCDTimer.player.setAudio(filename);
 }
 

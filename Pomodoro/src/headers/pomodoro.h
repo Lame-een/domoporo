@@ -17,7 +17,7 @@ private:
 	bool collapsed = false;
 	const int c_windowWidth = 545;
 	const int c_windowCollapsedHeight = 181;
-	const int c_windowHeight = 299;
+	const int c_windowHeight = 320;
 
 	int buttonAssignedIndex[3] = {0, 1, 2};
 
