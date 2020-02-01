@@ -190,7 +190,9 @@
     <QtRcc Include="res\pomodoro.qrc" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="data\save.xml" />
+    <Xml Include="data\save.xml">
+      <SubType>Designer</SubType>
+    </Xml>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />

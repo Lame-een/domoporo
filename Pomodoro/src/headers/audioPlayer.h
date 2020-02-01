@@ -10,7 +10,7 @@ private:
 	QString path;
 	QMediaPlayer player;
 
-	QString defPath = ".\\data\\alarms\\oth_def.wav";
+	QString defPath = ".\\data\\alarms\\oth_def.mp3";
 
 public:
 	AudioPlayer()
